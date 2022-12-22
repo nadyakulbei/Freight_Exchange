@@ -5,15 +5,28 @@
 {% endblock %}
 
 {% block content %}
-    <h1>Главная страница</h1>
+    <h1> Актуальные грузы </h1>
     {% if loads %}
-        {% for l in loads %}
+        {% for loads  in page_obj %}
             <div class = "alert alert-success mt-2">
-                <h3>{{l.title}}</h3>
-                <p>{{l.price}}</p>
+                <h3>{{loads.title}}</h3>
+                <p>{{loads.price}}</p>
             </div>
         {% endfor %}
     {% else %}
         <p> На данный момент грузов нет! <p>
     {% endif %}
+
+
+    <nav class = "list-pages">
+        <ul>
+            {% for p in page_obj.paginator.page_range %}
+            <li class = "icon">
+                <a href="?page={{ p }}">{{ p }}</a>
+                <span class="fas fa-angel-right"></span>
+            </li>
+            {% endfor %}
+        </ul>
+    </nav>
+
 {% endblock %}
