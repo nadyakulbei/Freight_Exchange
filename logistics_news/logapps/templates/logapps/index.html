@@ -1,0 +1,19 @@
+{% extends 'logapps/base.html'%}
+
+{% block title %}
+{{title}}
+{% endblock %}
+
+{% block content %}
+    <h1>Главная страница</h1>
+    {% if loads %}
+        {% for l in loads %}
+            <div class = "alert alert-success mt-2">
+                <h3>{{l.title}}</h3>
+                <p>{{l.price}}</p>
+            </div>
+        {% endfor %}
+    {% else %}
+        <p> На данный момент грузов нет! <p>
+    {% endif %}
+{% endblock %}
