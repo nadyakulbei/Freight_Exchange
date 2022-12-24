@@ -3,6 +3,10 @@ from django.http import HttpResponse
 from .models import Loads
 from .forms import LoadsForm
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
+from django.urls import reverse_lazy
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.forms import UserCreationForm
+from django.views.generic import ListView, DetailView, CreateView
 
 
 def index(request):
@@ -34,4 +38,15 @@ def create(request):
     }
     return render(request, 'logapps/create.html', context)
 
+# class RegisterUser(CreateView):
+#     form_class = UserCreationForm
+#     template_name = 'logapps/register.html'
+#     succes_url = reverse_lazy('register')
+#
+#     def get_context_data(self, *, object_list=None, **kwargs):
+#         context = super().get_context_data(**kwargs)
+#         c_def = self.get_user_context(title="Регистрация")
+#         return dict(list(context.items()) + list(c_def.items()))
 # Create your views here.
+def register(request):
+    return render(request, 'logapps/about.html')
