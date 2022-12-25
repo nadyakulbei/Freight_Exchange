@@ -3,11 +3,17 @@ from django.http import HttpResponse
 from .models import Loads
 from .forms import LoadsForm
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
+from django.views.generic import (
+    ListView,
+    DetailView,
+    CreateView,
+    DeleteView
+)
 from django.urls import reverse_lazy
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.forms import UserCreationForm
 from django.views.generic import ListView, DetailView, CreateView
-
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 
 def index(request):
     load = Loads.objects.all()
@@ -19,6 +25,12 @@ def index(request):
 
 def about(request):
     return render(request, 'logapps/about.html')
+
+def delete(request):
+    return render(request, 'logapps/delete.html')
+
+def post_detail(request):
+    return render(request, 'logapps/post-detail.html')
 
 
 def create(request):
@@ -38,6 +50,15 @@ def create(request):
     }
     return render(request, 'logapps/create.html', context)
 
+class PostDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
+    model = Loads
+    success_url = '/'
+
+    def test_func(self):
+        load = self.get_object()
+        if self.request.user == load.author:
+            return True
+        return False
 # class RegisterUser(CreateView):
 #     form_class = UserCreationForm
 #     template_name = 'logapps/register.html'
@@ -48,5 +69,3 @@ def create(request):
 #         c_def = self.get_user_context(title="Регистрация")
 #         return dict(list(context.items()) + list(c_def.items()))
 # Create your views here.
-def register(request):
-    return render(request, 'logapps/about.html')
