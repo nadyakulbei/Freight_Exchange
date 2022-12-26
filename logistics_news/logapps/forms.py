@@ -5,7 +5,7 @@ from django.forms import ModelForm, TextInput, Textarea
 class LoadsForm(ModelForm):
     class Meta:
         model = Loads
-        fields = ["title", "price"]
+        fields = ["title", "price", ]
         widgets = {
             "title": TextInput(attrs={
                 'class': 'form-control',

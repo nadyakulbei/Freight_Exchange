@@ -6,11 +6,12 @@
 
 {% block content %}
     <h1> Актуальные грузы </h1>
-    {% if loads %}
+    {% if loads%}
         {% for loads  in page_obj %}
             <div class = "alert alert-success mt-2">
                 <h3>{{loads.title}}</h3>
                 <p>{{loads.price}}</p>
+                <p>{{loads.author}}</p>
             </div>
         {% endfor %}
     {% else %}
