@@ -1,5 +1,11 @@
 {% extends 'logapps/base.html'%}
 
+{% load static%}
+
+{% block css_additional %}
+<link rel="stylesheet" href=" {% static 'logapps/css/info.css' %}">
+{%endblock%}
+
 {% block title %}
 Информация про нас
 {% endblock %}
@@ -7,4 +13,5 @@
 {% block content %}
     <h1>Страница про нас</h1>
     <p>Это мы такие крутые</p>
+
 {% endblock %}

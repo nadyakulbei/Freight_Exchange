@@ -1,5 +1,11 @@
 {% extends 'logapps/base.html'%}
 
+{% load static %}
+
+{% block css_additional %}
+<link rel="stylesheet" href=" {% static 'logapps/css/index.css' %}">
+{%endblock%}
+
 {% block title %}
 {{title}}
 {% endblock %}
