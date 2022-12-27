@@ -8,7 +8,8 @@ from django.views.generic import (
     ListView,
     DetailView,
     CreateView,
-    DeleteView
+    DeleteView,
+    UpdateView
 )
 from django.urls import reverse_lazy
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -28,7 +29,7 @@ def about(request):
     return render(request, 'logapps/about.html')
 
 def delete(request):
-    return render(request, 'logapps/delete.html')
+    return render(request, 'logapps/post-delete.html')
 
 def post_detail(request):
     return render(request, 'logapps/post-detail.html')
@@ -55,20 +56,17 @@ def create(request):
 
 class PostDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
     model = Loads
-    success_url = '/'
+    template_name = 'logapps/post-delete.html'
+    success_url = '/create'
 
     def test_func(self):
         load = self.get_object()
         if self.request.user == load.author:
             return True
         return False
-# class RegisterUser(CreateView):
-#     form_class = UserCreationForm
-#     template_name = 'logapps/register.html'
-#     succes_url = reverse_lazy('register')
-#
-#     def get_context_data(self, *, object_list=None, **kwargs):
-#         context = super().get_context_data(**kwargs)
-#         c_def = self.get_user_context(title="Регистрация")
-#         return dict(list(context.items()) + list(c_def.items()))
-# Create your views here.
+
+class NewsUpdateView(UpdateView):
+    model = Loads
+    template_name = 'create.html'
+    form_class = LoadsForm()
+

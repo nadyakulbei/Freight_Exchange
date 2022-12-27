@@ -20,8 +20,11 @@
     <open-files />
   </component>
   <component name="DBNavigator.Project.DatasetFilterManager">
+    <filter-actions connection-id="d70075a3-46b4-4564-ae2b-e58453eae70b" dataset="main.auth_group" active-filter-id="EMPTY_FILTER" />
+    <filter-actions connection-id="d70075a3-46b4-4564-ae2b-e58453eae70b" dataset="main.auth_group_permissions" active-filter-id="EMPTY_FILTER" />
     <filter-actions connection-id="d70075a3-46b4-4564-ae2b-e58453eae70b" dataset="main.users_profile" active-filter-id="EMPTY_FILTER" />
     <filter-actions connection-id="d70075a3-46b4-4564-ae2b-e58453eae70b" dataset="main.logapps_loads" active-filter-id="EMPTY_FILTER" />
+    <filter-actions connection-id="d70075a3-46b4-4564-ae2b-e58453eae70b" dataset="main.django_session" active-filter-id="EMPTY_FILTER" />
   </component>
   <component name="DBNavigator.Project.EditorStateManager">
     <last-used-providers />

@@ -19,6 +19,7 @@
                 <p>{{loads.price}}</p>
                 <p>{{loads.author}}</p>
                 <p>{{loads.date_posted}}</p>
+                <a href="{% url 'post-delete' loads.id%}" class="btn btn-danger">удалить</a>
             </div>
         {% endfor %}
     {% else %}

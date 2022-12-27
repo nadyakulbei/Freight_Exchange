@@ -11,6 +11,9 @@ class Loads(models.Model):
     def __str__(self):
         return self.title
 
+    def get_absolute_url(self):
+        return f'/index/{self.author}'
+
     class Meta:
         verbose_name = "Загрузку"
         verbose_name_plural = "Загрузки"

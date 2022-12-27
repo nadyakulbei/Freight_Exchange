@@ -1,0 +1,16 @@
+{% extends "logapps/base.html" %}
+{% block title %}
+Удаление груза
+{% endblock %}
+
+{% block content %}
+<div class="features">
+      <h1>Удаление</h1>
+    <form method="post">
+        {% csrf_token %}
+
+        <button type="submit" class ="btn-succcess">Удалить</button>
+        <span>{{error}}</span>
+    </form>
+    </div>
+{% endblock %}
