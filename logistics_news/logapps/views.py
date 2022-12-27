@@ -1,3 +1,4 @@
+from datetime import datetime
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from .models import Loads
@@ -38,6 +39,8 @@ def create(request):
     if request.method =='POST':
         form = LoadsForm(request.POST)
         if form.is_valid():
+            form.author = request.user
+            form.published_date = datetime.now()
             form.save()
             return redirect('/')
         else:

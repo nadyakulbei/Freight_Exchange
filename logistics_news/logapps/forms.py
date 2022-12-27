@@ -1,11 +1,11 @@
 from .models import Loads
-from django.forms import ModelForm, TextInput, Textarea
+from django.forms import ModelForm, TextInput, Select
 
 
 class LoadsForm(ModelForm):
     class Meta:
         model = Loads
-        fields = ["title", "price", ]
+        fields = ["title", "price", "author"]
         widgets = {
             "title": TextInput(attrs={
                 'class': 'form-control',
@@ -15,5 +15,8 @@ class LoadsForm(ModelForm):
                 'class': 'form-control',
                 'placeholder': 'Ставка за перевозку'
             }),
+            "author": Select(attrs={
+                 'class': 'form-control',
+                          'placeholder': 'Грузовладелец'})
         }
 
